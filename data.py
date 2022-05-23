@@ -38,8 +38,9 @@ def data_analysis(df):
     keys = corr.keys()
     for i in keys:
         for j in keys:
-            if i < j:
-                dict[(i, j)] = (abs(corr[i][j]))
+            if i == j or (i, j) in dict.keys() or (j, i) in dict.keys():
+                continue
+            dict[(i, j)] = (abs(corr[i][j]))
 
     largest_five = nlargest(5, dict, key=dict.get)
     smallest_five = nsmallest(5, dict, key=dict.get)

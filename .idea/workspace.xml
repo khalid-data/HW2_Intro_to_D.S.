@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d495e378-3439-4d27-b62d-3f65e09cf0b6" name="Default Changelist" comment="What's wrong?">
+    <list default="true" id="d495e378-3439-4d27-b62d-3f65e09cf0b6" name="Default Changelist" comment="used &quot;{:.6f}&quot;.format">
       <change beforePath="$PROJECT_DIR$/../HW2_Intro_to_D.S/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../HW2_Intro_to_D.S/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW2_Intro_to_D.S/clustering.py" beforeDir="false" afterPath="$PROJECT_DIR$/../HW2_Intro_to_D.S/clustering.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../HW2_Intro_to_D.S/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/../HW2_Intro_to_D.S/data.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +74,7 @@
       <updated>1653181680421</updated>
       <workItem from="1653181713999" duration="13470000" />
       <workItem from="1653222078913" duration="22000" />
-      <workItem from="1653222113108" duration="43622000" />
+      <workItem from="1653222113108" duration="44939000" />
     </task>
     <task id="LOCAL-00001" summary="second commit">
       <created>1653293669491</created>
@@ -117,7 +118,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653335558289</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="used &quot;{:.6f}&quot;.format">
+      <created>1653340325502</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1653340325502</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,20 +136,26 @@
     <MESSAGE value="third commit" />
     <MESSAGE value="almost done" />
     <MESSAGE value="What's wrong?" />
-    <option name="LAST_COMMIT_MESSAGE" value="What's wrong?" />
+    <MESSAGE value="used &quot;{:.6f}&quot;.format" />
+    <option name="LAST_COMMIT_MESSAGE" value="used &quot;{:.6f}&quot;.format" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/../HW2_Intro_to_D.S/clustering.py</url>
-          <line>92</line>
+          <line>90</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/../HW2_Intro_to_D.S/data.py</url>
-          <line>43</line>
+          <line>44</line>
           <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../HW2_Intro_to_D.S/main.py</url>
+          <line>22</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -153,6 +167,6 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/HW2_Intro_to_D_S_$main.coverage" NAME="main Coverage Results" MODIFIED="1653340256605" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../HW2_Intro_to_D.S" />
+    <SUITE FILE_PATH="coverage/HW2_Intro_to_D_S_$main.coverage" NAME="main Coverage Results" MODIFIED="1653343645303" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../HW2_Intro_to_D.S" />
   </component>
 </project>
