@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from math import pow
+
 np.random.seed(2)
 
 
@@ -49,10 +51,9 @@ def transform_data(df, features):
         array2[j] = (array2[j] - min2) / sum2
 
     transformed_data = np.vstack((array1, array2))
-    transformed_data = add_noise(transformed_data)
+    transformed_data = add_noise(transformed_data.transpose())# change shape from (n,2) to (2,n)
     print(transformed_data)
-    return transformed_data
-
+    return transformed_data.transpose()# get back shape
 
 
 def kmeans(data, k):
@@ -64,8 +65,13 @@ def kmeans(data, k):
     * labels - numpy array of size n, where each entry is the predicted label (cluster number)
     * centroids - numpy array of shape (k, 2), centroid for each cluster.
     """
-    pass
-    # return labels, centroids
+    curr_centroids = choose_initial_centroids(data, k)
+    prev_centroids = np.zeros(shape=(2, k))
+    while not np.array_equal(curr_centroids, prev_centroids):
+        labels = assign_to_clusters(data, curr_centroids)
+        prev_centroids = curr_centroids
+        curr_centroids = recompute_centroids(data, labels, k)
+    return labels, curr_centroids
 
 
 def visualize_results(data, labels, centroids, path):
@@ -87,19 +93,25 @@ def dist(x, y):
     :param y: numpy array of size n
     :return: the euclidean distance
     """
-    pass
+    g = sum([pow((i - j), 2) for i, j in zip(x, y)])
+    return g ** (1 / 2)
     # return distance
 
 
 def assign_to_clusters(data, centroids):
     """
     Assign each data point to a cluster based on current centroids
+    for each point in data find_closest_centroid and assign it to that
+
     :param data: data as numpy array of shape (n, 2)
     :param centroids: current centroids as numpy array of shape (k, 2)
     :return: numpy array of size n
     """
-    pass
-    # return labels
+    labels = np.zeros(shape=data.size)
+    for i in range(data.size):
+        index = find_closest_centroid(centroids, data[i])
+        labels[i] = index
+    return labels
 
 
 def recompute_centroids(data, labels, k):
@@ -110,6 +122,39 @@ def recompute_centroids(data, labels, k):
     :param k: number of clusters
     :return: numpy array of shape (k, 2)
     """
-    pass
-    # return centroids
+    clusters = np.zeros(shape=(2, k))
+    for i in range(k):
+        cnt = 0
+        for j in range(data.size):
+            if labels[j] == i:
+                clusters[0][i] += data[0][j]
+                clusters[1][i] += data[1][j]
+                cnt += 1
+        clusters[0][i] = clusters[0][i] / cnt
+        clusters[1][i] = clusters[1][i] / cnt
+    return clusters
 
+
+def euclidian_dist(y, x):
+    """
+    Euclidean distance between vectors x, y 2 dimintional
+    :param x: numpy array of size n
+    :param y: numpy array of size n
+    :return: the euclidean distance
+    """
+    g = sum([pow((i - j), 2) for i, j in zip(y, x)])
+    return g ** (1 / 2)
+
+
+def find_closest_centroid(array, x):
+    i = 0
+    min_index = 0
+    min_dist = euclidian_dist(array[i], x)
+
+    for i in range(array.size):
+        temp_dist = euclidian_dist(array[i], x)
+        if temp_dist < min_dist:
+            min_dist = temp_dist
+            min_index = i
+
+    return min_index

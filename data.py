@@ -1,6 +1,5 @@
 import pandas as pd
 import datetime
-from datetime import datetime
 from heapq import nlargest, nsmallest
 from datetime import datetime
 
@@ -70,8 +69,7 @@ def data_analysis(df):
 
 def return_hour(str):
     datetime_object = datetime.strptime(str, '%d/%m/%Y %H:%M')
-    d = datetime_object.strftime('%H:%M')
-    return d
+    return datetime_object.hour
 
 
 def return_year(str):
