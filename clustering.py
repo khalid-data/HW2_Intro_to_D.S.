@@ -55,7 +55,6 @@ def transform_data(df, features):
 
     transformed_data = np.vstack((array1, array2))
     transformed_data = add_noise(transformed_data.transpose())  # change shape from (n,2) to (2,n)
-    print(transformed_data)
     return transformed_data  # get back shape
 
 
@@ -101,6 +100,8 @@ def visualize_results(data, labels, centroids, path):
     # plt.savefig(path)
 
 
+
+
 def dist(x, y):
     """
     Euclidean distance between vectors x, y
@@ -122,7 +123,7 @@ def assign_to_clusters(data, centroids):
     :param centroids: current centroids as numpy array of shape (k, 2)
     :return: numpy array of size n
     """
-    labels = np.zeros(shape=data.size)
+    labels = np.zeros(shape=data.size)##lennnnnnnnnnnnnn!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     for i in range(len(data)):
         index = find_closest_centroid(centroids, data[i])
         labels[i] = index

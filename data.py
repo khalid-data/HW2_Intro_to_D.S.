@@ -36,19 +36,18 @@ def data_analysis(df):
     print()
     dict = {}
     keys = corr.keys()
-    print(corr[keys[0]][keys[1]])
     for i in keys:
         for j in keys:
             if i < j:
-                dict[(i, j)] = corr[i][j]
+                dict[(i, j)] = "{:.6}".format(abs(corr[i][j]))
 
     largest_five = nlargest(5, dict, key=dict.get)
     smallest_five = nsmallest(5, dict, key=dict.get)
 
-    print("Highest correlated are:")
+    print("Highest correlated are: ")
     i = 1
     for key in largest_five:
-        print(str(i) + '. ' + str(key) + ' with <' + str(dict[key]) + '>')
+        print(str(i) + '. ' + str(key) + ' with ' + str(dict[key]))
         i = i + 1
 
     print()
@@ -56,15 +55,13 @@ def data_analysis(df):
     """ 6 figures after decimal point"""
     i = 1
     for key in smallest_five:
-        print(str(i) + '. ' + str(key) + ' with <' + str(dict[key]) + '>')
+        print(str(i) + '. ' + str(key) + ' with ' + str("{:.6}".format(dict[key])))
         i = i + 1
 
-    season_mean = df.groupby(['season_name']).mean()
-    print(df)
-    print(season_mean)
-    print(type(season_mean))
-    season_mean.apply(lambda x: print(str(x.name) + ' average t_diff is <' + str(x.t_diff) + '>'), axis=1)
-    print('all average t_diff is <' + str(df[['t_diff']].mean()['t_diff']) + '>')
+    season_mean = round(df.groupby(['season_name']).mean(), 2)
+
+    season_mean.apply(lambda x: print(str(x.name) + ' average t_diff is ' + str(x.t_diff)), axis=1)
+    print('All average t_diff is ' + str("{:.6}".format(df[['t_diff']].mean()['t_diff'])))
 
 
 def return_hour(str):
