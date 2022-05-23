@@ -2,6 +2,9 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from math import pow
+import pylab as plb
+import matplotlib.pyplot as plt
+import numpy as np
 
 np.random.seed(2)
 
@@ -51,9 +54,9 @@ def transform_data(df, features):
         array2[j] = (array2[j] - min2) / sum2
 
     transformed_data = np.vstack((array1, array2))
-    transformed_data = add_noise(transformed_data.transpose())# change shape from (n,2) to (2,n)
+    transformed_data = add_noise(transformed_data.transpose())  # change shape from (n,2) to (2,n)
     print(transformed_data)
-    return transformed_data.transpose()# get back shape
+    return transformed_data  # get back shape
 
 
 def kmeans(data, k):
@@ -66,7 +69,7 @@ def kmeans(data, k):
     * centroids - numpy array of shape (k, 2), centroid for each cluster.
     """
     curr_centroids = choose_initial_centroids(data, k)
-    prev_centroids = np.zeros(shape=(2, k))
+    prev_centroids = np.zeros(shape=(k, 2))
     while not np.array_equal(curr_centroids, prev_centroids):
         labels = assign_to_clusters(data, curr_centroids)
         prev_centroids = curr_centroids
@@ -82,7 +85,19 @@ def visualize_results(data, labels, centroids, path):
     :param centroids: the final centroids of kmeans, as numpy array of shape (k, 2)
     :param path: path to save the figure to.
     """
-    pass
+    new_data = np.zeros(shape=(len(data), 3))
+    for i in range(len(data)):
+        new_data[i][0] = data[i][0]
+        new_data[i][1] = data[i][1]
+        new_data[i][2] = labels[i]
+
+    plt.xlabel('cnt')
+    plt.ylabel('hum')
+    # Alternatively:
+
+    plt.scatter(new_data[:, 0], new_data[:, 1], c=new_data[:, 2])
+    plt.title('Result for kmean with k = ' + str(len(centroids)))
+    plt.show()
     # plt.savefig(path)
 
 
@@ -108,7 +123,7 @@ def assign_to_clusters(data, centroids):
     :return: numpy array of size n
     """
     labels = np.zeros(shape=data.size)
-    for i in range(data.size):
+    for i in range(len(data)):
         index = find_closest_centroid(centroids, data[i])
         labels[i] = index
     return labels
@@ -122,16 +137,16 @@ def recompute_centroids(data, labels, k):
     :param k: number of clusters
     :return: numpy array of shape (k, 2)
     """
-    clusters = np.zeros(shape=(2, k))
+    clusters = np.zeros(shape=(k, 2))
     for i in range(k):
         cnt = 0
-        for j in range(data.size):
+        for j in range(len(data)):
             if labels[j] == i:
-                clusters[0][i] += data[0][j]
-                clusters[1][i] += data[1][j]
+                clusters[i][0] += data[j][0]
+                clusters[i][1] += data[j][1]
                 cnt += 1
-        clusters[0][i] = clusters[0][i] / cnt
-        clusters[1][i] = clusters[1][i] / cnt
+        clusters[i][0] = clusters[i][0] / cnt
+        clusters[i][1] = clusters[i][1] / cnt
     return clusters
 
 
@@ -151,10 +166,9 @@ def find_closest_centroid(array, x):
     min_index = 0
     min_dist = euclidian_dist(array[i], x)
 
-    for i in range(array.size):
+    for i in range(len(array)):
         temp_dist = euclidian_dist(array[i], x)
         if temp_dist < min_dist:
             min_dist = temp_dist
             min_index = i
-
     return min_index

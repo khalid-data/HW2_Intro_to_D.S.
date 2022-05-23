@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d495e378-3439-4d27-b62d-3f65e09cf0b6" name="Default Changelist" comment="third commit" />
+    <list default="true" id="d495e378-3439-4d27-b62d-3f65e09cf0b6" name="Default Changelist" comment="third commit">
+      <change beforePath="$PROJECT_DIR$/../HW2_Intro_to_D.S/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../HW2_Intro_to_D.S/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW2_Intro_to_D.S/clustering.py" beforeDir="false" afterPath="$PROJECT_DIR$/../HW2_Intro_to_D.S/clustering.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW2_Intro_to_D.S/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../HW2_Intro_to_D.S/main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,6 +33,13 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
   </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings>
+        <option name="useSoftWraps" value="true" />
+      </console-settings>
+    </option>
+  </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="HW2_Intro_to_D.S" />
@@ -44,7 +55,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../HW2_Intro_to_D.S/main.py" />
-      <option name="PARAMETERS" value="london.csv" />
+      <option name="PARAMETERS" value="london_sample_500.csv" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -63,7 +74,7 @@
       <updated>1653181680421</updated>
       <workItem from="1653181713999" duration="13470000" />
       <workItem from="1653222078913" duration="22000" />
-      <workItem from="1653222113108" duration="27144000" />
+      <workItem from="1653222113108" duration="32477000" />
     </task>
     <task id="LOCAL-00001" summary="second commit">
       <created>1653293669491</created>
@@ -86,7 +97,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653304889718</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="third commit">
+      <created>1653307556273</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1653307556273</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,8 +120,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/../HW2_Intro_to_D.S/clustering.py</url>
-          <line>24</line>
-          <option name="timeStamp" value="20" />
+          <line>93</line>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -115,6 +133,6 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/HW2_Intro_to_D_S_$main.coverage" NAME="main Coverage Results" MODIFIED="1653304396723" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../HW2_Intro_to_D.S" />
+    <SUITE FILE_PATH="coverage/HW2_Intro_to_D_S_$main.coverage" NAME="main Coverage Results" MODIFIED="1653315441681" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../HW2_Intro_to_D.S" />
   </component>
 </project>

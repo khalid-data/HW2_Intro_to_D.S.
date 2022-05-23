@@ -13,7 +13,8 @@ def main(argv):
     df = data.load_data(argv[1])
     fetures = ['cnt', 'hum']
     x = transform_data(df, fetures)
-
+    labels, centroids = kmeans(x, 5)
+    visualize_results(x, labels, centroids, 0)
 
 if __name__ == '__main__':
     main(sys.argv)
