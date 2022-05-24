@@ -41,18 +41,14 @@ def transform_data(df, features):
 
     array1 = df[features[0]].to_numpy()
     array2 = df[features[1]].to_numpy()
-    sum1 = np.sum(array1)
-    sum2 = np.sum(array2)
-    min1 = np.min(array1)
-    min2 = np.min(array2)
-    for i in range(array1.size):
-        array1[i] = (array1[i] - min1) / sum1
 
-    for j in range(array2.size):
-        array2[j] = (array2[j] - min2) / sum2
+    array1 = (array1 - array1.min()) / array1.sum()
+    array2 = (array2 - array2.min()) / array2.sum()
 
-    transformed_data = np.vstack((array1, array2))
-    transformed_data = add_noise(transformed_data.transpose())  # change shape from (n,2) to (2,n)
+    transformed_data = np.vstack((array1, array2)).transpose()
+
+    transformed_data = add_noise(transformed_data)  # change shape from (n,2) to (2,n)\
+
     return transformed_data  # get back shape
 
 
@@ -93,8 +89,12 @@ def visualize_results(data, labels, centroids, path):
     # Alternatively:
 
     plt.scatter(new_data[:, 0], new_data[:, 1], c=new_data[:, 2])
+    for i in range(len(centroids)):
+        plt.scatter(centroids[i, 0], centroids[i, 1], color='white', edgecolors='black', marker='*', linewidth=2,
+                    s=100, alpha=0.85, label=f'Centroid' if i == 0 else None)
     plt.title('Result for kmean with k = ' + str(len(centroids)))
-    plt.show()
+    print(np.array_str(centroids, precision=3, suppress_small=True))
+    plt.savefig(path)
     # plt.savefig(path)
 
 
@@ -156,8 +156,7 @@ def euclidian_dist(y, x):
     :param y: numpy array of size n
     :return: the euclidean distance
     """
-    g = sum([pow((i - j), 2) for i, j in zip(y, x)])
-    return g ** (1 / 2)
+    return np.linalg.norm(x - y)
 
 
 def find_closest_centroid(array, x):
