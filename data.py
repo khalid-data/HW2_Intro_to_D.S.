@@ -5,13 +5,22 @@ from datetime import datetime
 
 
 def load_data(path):
-    """ reads and returns the pandas DataFrame """
+    """
+    reads and returns the pandas DataFrame
+    :param path: path to csv file
+    :return: the data frame
+    """
     df = pd.read_csv(path)
     return df
 
 
 def add_new_columns(df):
-    """“””adds columns to df and returns the new df”””"""
+    """
+    adds columns to df and returns the new df
+    :param df: data frame
+    :return: new dataframe
+    """
+
     df['season_name'] = df['season'].apply(lambda season: "spring" if season == 0 else "summer" if season == 1
     else "fall" if season == 2 else "winter")
     df['Hour'] = df['timestamp'].apply(return_hour)
@@ -26,7 +35,11 @@ def add_new_columns(df):
 
 
 def data_analysis(df):
-    """prints statistics on the transformed df"""
+    """
+    prints statistics on the transformed df
+    :param df: given data frame
+    :return: none
+    """
     print("describe output:")
     print(df.describe().to_string())
     print()
@@ -67,20 +80,40 @@ def data_analysis(df):
 
 
 def return_hour(str):
+    """
+    returns the hour part of the str
+    :param str: string of the date
+    :return: hour
+    """
     datetime_object = datetime.strptime(str, '%d/%m/%Y %H:%M')
     return datetime_object.hour
 
 
 def return_year(str):
+    """
+    returns the year part of the str
+    :param str: string of the date
+    :return: year
+    """
     datetime_object = datetime.strptime(str, '%d/%m/%Y %H:%M')
     return datetime_object.year
 
 
 def return_month(str):
+    """
+    returns the month part of the str
+    :param str: string of the date
+    :return: month
+    """
     datetime_object = datetime.strptime(str, '%d/%m/%Y %H:%M')
     return datetime_object.month
 
 
 def return_day(str):
+    """
+    returns the day part of the str
+    :param str: string of the date
+    :return: day
+    """
     datetime_object = datetime.strptime(str, '%d/%m/%Y %H:%M')
     return datetime_object.day

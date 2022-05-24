@@ -18,6 +18,7 @@ def add_noise(data):
 
 def choose_initial_centroids(data, k):
     """
+    randomly chooses initial centroids
     :param data: dataset as numpy array of shape (n, 2)
     :param k: number of clusters
     :return: numpy array of k random items from dataset
@@ -93,7 +94,8 @@ def visualize_results(data, labels, centroids, path):
         plt.scatter(centroids[i, 0], centroids[i, 1], color='white', edgecolors='black', marker='*', linewidth=2,
                     s=100, alpha=0.85, label=f'Centroid' if i == 0 else None)
     plt.title('Result for kmean with k = ' + str(len(centroids)))
-    print(np.array_str(centroids, precision=3, suppress_small=True))
+    print(np.array_str(centroids, precision=3, suppress_small=True), end='')
+
     plt.savefig(path)
     # plt.savefig(path)
 
@@ -159,13 +161,19 @@ def euclidian_dist(y, x):
     return np.linalg.norm(x - y)
 
 
-def find_closest_centroid(array, x):
+def find_closest_centroid(centroids, x):
+    """
+    finds the closest centroid (cluster) to the point
+    :param centroids: curr centroids
+    :param x: point
+    :return: index of closest centroid
+    """
     i = 0
     min_index = 0
-    min_dist = euclidian_dist(array[i], x)
+    min_dist = euclidian_dist(centroids[i], x)
 
-    for i in range(len(array)):
-        temp_dist = euclidian_dist(array[i], x)
+    for i in range(len(centroids)):
+        temp_dist = euclidian_dist(centroids[i], x)
         if temp_dist < min_dist:
             min_dist = temp_dist
             min_index = i

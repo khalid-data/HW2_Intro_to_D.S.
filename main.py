@@ -11,7 +11,7 @@ import sys
 
 def main(argv):
     print('Part A: ')
-    df = data.load_data(argv[1])
+    df = data.load_data('london.csv')
     df = add_new_columns(df)
     data_analysis(df)
     fetures = ['cnt', 'hum']
@@ -27,6 +27,9 @@ def main(argv):
             print()
         print('k = ' + str(k))
         visualize_results(x, labels, centroids, f'plot{k}.png')
+        if k != 5:
+            print()
+
 
 
 if __name__ == '__main__':
